@@ -1,12 +1,7 @@
 <template>
   <w-app>
     <div id="app">
-      <div class="welcome">
-        <amplify-authenticator>
-          <Container />
-          <amplify-sign-out />
-        </amplify-authenticator>
-      </div>
+      <Container />
     </div>
   </w-app>
 </template>
@@ -14,21 +9,8 @@
 <script>
 import Container from "./components/Container.vue";
 
-import { AuthState, onAuthUIStateChange } from "@aws-amplify/ui-components";
 export default {
   name: "App",
-  data() {
-    return {
-      user: {},
-    };
-  },
-  created() {
-    onAuthUIStateChange((state, user) => {
-      if (state === AuthState.SignedIn) {
-        this.user = user;
-      }
-    });
-  },
   components: {
     Container,
   },
